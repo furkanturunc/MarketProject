@@ -431,7 +431,8 @@ function App() {
     tempBrands[event.target.id] = event.target.checked;
     setStateBrands(tempBrands);
     let newItems = tempProducts.filter((item) => item.manufacturer === brands[event.target.id - 1]);
-    setTempProducts(newItems);
+    let finalItems = newItems.concat.apply(newItems, tempProducts);
+    setTempProducts(finalItems);
   };
 
   const handleChangeTags = (event) => {
@@ -500,7 +501,6 @@ const handleItemType = (itemType) => {
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentItems = tempProducts.slice(indexOfFirst, indexOfLast);
-
   const paginate = pageNo => setCurrentPage(pageNo);
 
 
@@ -577,10 +577,10 @@ const handleItemType = (itemType) => {
             <div className={classes.sortingBody}>
               <FormControl component="fieldset">
                 <RadioGroup name="position" value={value} onChange={handleChangeSorting}>
-                  <FormControlLabel value="priceLowToHigh" control={<Radio />} label="Price low to high"/>
-                  <FormControlLabel value="priceHighToLow" control={<Radio />} label="Price high to low"/>
-                  <FormControlLabel value="newToOld" control={<Radio />} label="New to old"/>
-                 <FormControlLabel value="oldToNew" control={<Radio />} label="Old to new"/>
+                  <FormControlLabel value="priceLowToHigh" control={<Radio />} label="Price low to high" onChange={handlePriceLowToHigh}/>
+                  <FormControlLabel value="priceHighToLow" control={<Radio />} label="Price high to low" onChange={handlePriceHighToLow}/>
+                  <FormControlLabel value="newToOld" control={<Radio />} label="New to old" onChange={handleNewToOld}/>
+                 <FormControlLabel value="oldToNew" control={<Radio />} label="Old to new" onChange={handleOldToNew}/>
                 </RadioGroup>
             </FormControl>
             </div>

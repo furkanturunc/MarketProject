@@ -19,7 +19,6 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
                 <a onClick={() => paginate(number)} href='!#' style={{textDecoration: "none"}} >
                 {number}
                 </a>
-                
             </li>
             ))}
             ....
@@ -55,7 +54,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
         <ul style={{display:"flex", flexFlow:"row"}}>
             {pageNumbers.slice(currentPage - 6, currentPage).map(number => (
             <li key={number} style={{marginRight: "15px", listStyleType: "none",}}>
-                <a onClick={() => paginate(number)} href='!#' style={{textDecoration: "none"}} >
+                <a onClick={() => paginate(number)} href='!#' style={{textDecoration: "none"}}>
                 {number}
                 </a>
                 
